@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model states {
+  id Int @id @default(autoincrement())
+  name String 
+  city cities[]
+  branch branches[]
+  adress adress[]
+}
+
+model cities {
+  id Int @id @default(autoincrement())
+  name String
+  state states @relation(fields: [stateId], references: [id])
+  stateId Int
+  branch branches[]
+  adress adress[]
+}
+
+model ecommerce {
+  id Int @id @default(autoincrement())
+  name String
+  since String
+  branch branches[]
+}
+
+model branches {
+  id Int @id @default(autoincrement())
+  zipcode Int 
+  country String @default("Brasil")
+  state states @relation(fields: [stateId], references: [id])
+  stateId Int
+  city cities @relation(fields: [cityId], references: [id])
+  cityId Int
+  neighborhood String
+  street String
+  number Int
+  ecommerce ecommerce @relation(fields: [ecommerceId], references: [id])
+  ecommerceId Int
+}
+
+model users {
+  id Int @id @default(autoincrement())
+  name String  @db.VarChar(80)
+  birthday String
+  email String @unique
+  password String
+  admin Boolean @default(false)
+  order orders[]
+  createdAt  DateTime   @default(now())
+}
+
+model cakeDough {
+  id Int @id @default(autoincrement())
+  type String
+  value Int
+  product products[]
+  orderProduct orderProducts[]
+}
+
+model cakeFilling {
+  id Int @id @default(autoincrement())
+  type String
+  value Int
+  product products[]
+  orderProduct orderProducts[]
+}
+
+model sizes {
+  id Int @id @default(autoincrement())
+  kg Int
+  product products[]
+  oderProduct orderProducts[]
+}
+
+model products {
+  id Int @id @default(autoincrement())
+  name String
+  dough cakeDough @relation(fields: [cakeDoughtId], references: [id])
+  cakeDoughtId Int
+  filling cakeFilling @relation(fields: [cakeFillingId], references: [id])
+  cakeFillingId Int
+  size sizes @relation(fields: [sizeId], references: [id])
+  sizeId Int
+  price Int
+  description String
+}
+
+model adress {
+  id Int @id @default(autoincrement())
+  zipcode String
+  country String
+  state states @relation(fields: [stateId], references: [id])
+  stateId Int
+  city cities @relation(fields: [cityId], references: [id])
+  cityId Int
+  neighborhood String
+  street String
+  number Int
+  order orders[]
+}
+
+model orderProducts {
+  id Int @id @default(autoincrement())
+  dough cakeDough @relation(fields: [cakeDoughId], references: [id])
+  cakeDoughId	Int
+  filling cakeFilling @relation(fields: [cakeFillingId], references: [id])
+  cakeFillingId Int
+  size sizes @relation(fields: [sizeId], references: [id])
+ 	sizeId Int
+  quantity Int
+  total Int
+  paidPrice Int
+  createdAt  DateTime   @default(now())
+  oder orders[]
+}
+
+model orders {
+  id Int @id @default(autoincrement())
+  user users @relation(fields: [userId], references: [id])
+  userId Int
+  orderProduct orderProducts @relation(fields: [orderProductId], references: [id])
+  orderProductId Int
+  adress adress @relation(fields: [adressId], references: [id])
+  adressId Int
+  createdAt  DateTime   @default(now())
+}
