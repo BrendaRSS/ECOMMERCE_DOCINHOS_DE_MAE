@@ -9,3 +9,8 @@ export type Bodyuser = {
   email: string;
   password: string;
 };
+
+export type bodyLogin = {
+  email: string;
+  password: string
+}
