@@ -1,0 +1,185 @@
+async function main() {
+  let stateAC = await prisma.states.create({
+    data: 
+      {
+        name: 'Acre - AC',
+      },
+  });
+
+  let stateAL = await prisma.states.create({
+    data: {
+        name: 'Alagoas - AL',
+      },
+  });
+
+    let stateAP = await prisma.states.create({
+    data: {
+        name: 'Amapá - AP',
+      },
+    });
+
+    let stateAM = await prisma.states.create({
+    data: {
+        name: 'Amazonas - AM',
+      },
+    });
+
+    let stateBA = await prisma.states.create({
+    data:{
+        name: 'Bahia - BA',
+      },
+    });
+
+    let stateCE = await prisma.states.create({
+    data:{
+        name: 'Ceará - CE',
+      },
+    });
+
+    let stateES = await prisma.states.create({
+    data:{
+        name: 'Espírito Santo - ES',
+      },
+    });
+
+    let stateGO = await prisma.states.create({
+    data: {
+        name: 'Goiás - GO',
+      },
+    });
+
+    let stateMA = await prisma.states.create({
+    data:{
+        name: 'Maranhão - MA',
+      },
+    });
+
+    let stateMT = await prisma.states.create({
+    data: {
+        name: 'Mato Grosso - MT',
+      },
+    });
+
+    let stateMS = await prisma.states.create({
+    data: {
+        name: 'Mato Grosso do Sul - MS',
+      },
+    });
+
+    let stateMG = await prisma.states.create({
+    data: {
+        name: 'Minas Gerais - MG',
+      },
+    });
+
+    let statePA = await prisma.states.create({
+    data:  {
+        name: 'Pará - PA',
+      },
+  });
+
+    let statePB = await prisma.states.create({
+    data: {
+        name: 'Paraíba - PB',
+      },
+  });
+
+    let statePR = await prisma.states.create({
+    data:  {
+        name: 'Paraná - PR',
+      },
+  });
+
+    let statePE = await prisma.states.create({
+    data: {
+        name: 'Pernambuco - PE',
+      },
+  });
+
+  let statePI = await prisma.states.create({
+    data: {
+        name: 'Piauí - PI',
+      },
+  });
+
+  let stateRJ = await prisma.states.create({
+    data: {
+        name: 'Rio de Janeiro - RJ',
+      },
+  });
+
+  let stateRN = await prisma.states.create({
+    data: {
+        name: 'Rio Grande do Norte - RN',
+      },
+  });
+
+  let stateRS = await prisma.states.create({
+    data: {
+        name: 'Rio Grande do Sul - RS',
+      },
+  });
+
+  let stateRO = await prisma.states.create({
+    data: {
+        name: 'Rondônia - RO',
+      },
+  });
+
+   let stateRR = await prisma.states.create({
+    data: {
+        name: 'Roraima - RR',
+      },
+  });
+
+   let stateSC = await prisma.states.create({
+    data: {
+        name: 'Santa Catarina - SC',
+      },
+  });
+
+  let stateSP = await prisma.states.create({
+    data: {
+        name: 'São Paulo - SP',
+      },
+  });
+
+  let stateSE = await prisma.states.create({
+    data: {
+        name: 'Sergipe - SE',
+      },
+  });
+
+  let stateTO = await prisma.states.create({
+    data: {
+        name: 'Tocantins - TO',
+      },
+  });
+
+  let stateDF = await prisma.states.create({
+    data: {
+      name: 'Distrito Federal - DF',
+    },
+  });
+
+  let citiesAC = await prisma.cities.createMany({
+    data: [
+      {
+        name: 'Conde',
+        stateId: statePB.id,
+      },
+      {
+        name: 'João Pessoa',
+        stateId: statePB.id,
+      },
+      {
+        name: 'Lucena',
+        stateId: statePB.id,
+      },
+      {
+        name: 'Santa Rita',
+        stateId: statePB.id,
+      },
+    ],
+  });
+}

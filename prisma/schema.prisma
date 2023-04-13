@@ -61,6 +61,12 @@ model users {
   session session[]
 }
 
+model fillingCategory {
+  id Int @id @default(autoincrement())
+  name String
+  cakeFilling cakeFilling[]
+}
+
 model cakeDough {
   id Int @id @default(autoincrement())
   type String
@@ -72,6 +78,8 @@ model cakeDough {
 model cakeFilling {
   id Int @id @default(autoincrement())
   type String
+  category fillingCategory @relation(fields: [categoryId], references: [id])
+  categoryId Int
   value Int
   product products[]
   orderProduct orderProducts[]

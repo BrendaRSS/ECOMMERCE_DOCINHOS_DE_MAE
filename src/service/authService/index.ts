@@ -1,4 +1,4 @@
-import { conflictError } from "../../errors/conflictError";
+import conflictError from "../../errors/conflictError";
 import notFoundError from "../../errors/notFoundError";
 import unauthorizedError from "../../errors/unauthorizedError";
 import { bodyLogin, Bodyuser } from "../../protocols";
@@ -18,6 +18,8 @@ async function signUpUser(body: Bodyuser) {
   if(!postSignUp){
     throw notFoundError();
   }
+
+  delete postSignUp.password;
 
   return postSignUp;
 }
