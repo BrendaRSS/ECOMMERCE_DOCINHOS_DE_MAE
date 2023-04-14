@@ -1,9 +1,9 @@
-import conflictError from "../../errors/conflictError";
-import notFoundError from "../../errors/notFoundError";
-import unauthorizedError from "../../errors/unauthorizedError";
-import { bodyLogin, Bodyuser } from "../../protocols";
-import authRepository from "../../repository/authRepository";
-import sessionRepository from "../../repository/sessionRepository";
+import conflictError from "../errors/conflictError";
+import notFoundError from "../errors/notFoundError";
+import unauthorizedError from "../errors/unauthorizedError";
+import { bodyLogin, Bodyuser } from "../protocols";
+import authRepository from "../repository/authRepository";
+import sessionRepository from "../repository/sessionRepository";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
