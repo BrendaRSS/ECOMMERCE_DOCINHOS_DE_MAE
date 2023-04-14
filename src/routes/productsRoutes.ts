@@ -1,10 +1,17 @@
 import { Router } from "express";
-import { createProduct, selectAllProducts, selectOneProduct} from "../controllers/productsControllers";
+import {
+  createProduct,
+  findAllProducts,
+  selectOneProduct,
+  findAllCategories,
+} from '../controllers/productsControllers';
+import validationProduct from "../middlewares/validationProduct";
 
 const productsRoutes = Router();
 
-productsRoutes.post('/product', createProduct);
-productsRoutes.get('/product', selectAllProducts);
-productsRoutes.get('product/:id', selectOneProduct);
+productsRoutes.post('/product', validationProduct, createProduct);
+productsRoutes.get('/product', findAllProducts);
+// productsRoutes.get('/product/:id', selectOneProduct);
+productsRoutes.get('/product/category', findAllCategories);
 
 export default productsRoutes;

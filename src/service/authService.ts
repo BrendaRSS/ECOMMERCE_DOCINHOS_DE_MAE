@@ -1,7 +1,7 @@
 import conflictError from "../errors/conflictError";
 import notFoundError from "../errors/notFoundError";
 import unauthorizedError from "../errors/unauthorizedError";
-import { bodyLogin, Bodyuser } from "../protocols";
+import { BodyLogin, Bodyuser } from "../protocols";
 import authRepository from "../repository/authRepository";
 import sessionRepository from "../repository/sessionRepository";
 import bcrypt from "bcrypt";
@@ -24,7 +24,7 @@ async function signUpUser(body: Bodyuser) {
   return postSignUp;
 }
 
-async function signIn(body: bodyLogin) {
+async function signIn(body: BodyLogin) {
   const userExist = await authRepository.findUserByEmail(body.email);
   if (!userExist) {
     throw unauthorizedError();

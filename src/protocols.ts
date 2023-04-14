@@ -10,7 +10,17 @@ export type Bodyuser = {
   password: string;
 };
 
-export type bodyLogin = {
+export type BodyLogin = {
   email: string;
   password: string
+};
+
+export type Product = {
+  name: string,
+  cakeDoughtId: number ,
+  cakeFillingId: number,
+  sizeId: number,
+  price: number,
+  description: string,
+  image: string,
 }

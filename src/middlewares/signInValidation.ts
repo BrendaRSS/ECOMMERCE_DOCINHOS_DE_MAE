@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
 import { signInSchema } from "../models/authSchema";
+import { BodyLogin } from "../protocols";
 
 export async function signInValidation(req: Request, res: Response, next: NextFunction) {
-    const body = req.body;
+    const body = req.body as BodyLogin;
 
     const {error} = signInSchema.validate(body, {abortEarly: false});
     if(error) {

@@ -103,6 +103,7 @@ model products {
   sizeId Int
   price Int
   description String
+  image String
 }
 
 model adress {
