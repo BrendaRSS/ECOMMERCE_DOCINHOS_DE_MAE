@@ -65,6 +65,7 @@ model fillingCategory {
   id Int @id @default(autoincrement())
   name String
   cakeFilling cakeFilling[]
+  price String @default("")
 }
 
 model cakeDough {
@@ -90,6 +91,20 @@ model sizes {
   kg Int
   product products[]
   oderProduct orderProducts[]
+}
+
+model categoryDecoration {
+  id Int @id @default(autoincrement())
+  name String
+  decoration decorations[]
+}
+
+model decorations {
+  id Int @id @default(autoincrement())
+  name String
+  category categoryDecoration @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  value Int
 }
 
 model products {
